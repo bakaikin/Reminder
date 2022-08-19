@@ -2,7 +2,7 @@ package com.bakaikin.sergey.reminder.adapter;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
-import android.support.v13.app.FragmentStatePagerAdapter;
+import androidx.legacy.app.FragmentStatePagerAdapter;
 
 import com.bakaikin.sergey.reminder.fragment.CurrentTaskFragment;
 import com.bakaikin.sergey.reminder.fragment.DoneTaskFragment;

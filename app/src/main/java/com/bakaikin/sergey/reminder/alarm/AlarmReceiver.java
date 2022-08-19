@@ -6,7 +6,7 @@ import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.NotificationCompat;
+import androidx.core.app.NotificationCompat;
 
 import com.bakaikin.sergey.reminder.MainActivity;
 import com.bakaikin.sergey.reminder.MyApplication;
