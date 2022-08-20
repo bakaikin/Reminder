@@ -16,7 +16,7 @@
             android:layout_marginRight="16dp"
             android:layout_marginTop="16dp">
 
-            <TextInputEditText
+            <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="16sp" />
@@ -29,10 +29,10 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/tilDialogTaskTitle"
             android:layout_marginTop="16dp"
-            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
             android:layout_marginBottom="16dp">
 
-            <TextInputEditText
+            <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
@@ -47,10 +47,10 @@
             android:layout_width="130dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tilDialogTaskTitle"
-            android:layout_alignRight="@+id/tilDialogTaskTitle"
+            android:layout_alignEnd="@+id/tilDialogTaskTitle"
             android:layout_marginTop="16dp">
 
-            <EditText
+            <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
