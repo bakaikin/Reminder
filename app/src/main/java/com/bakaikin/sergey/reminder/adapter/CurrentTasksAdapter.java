@@ -5,13 +5,12 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.content.res.Resources;
 import android.os.Handler;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import java.util.Calendar;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.bakaikin.sergey.reminder.R;
 import com.bakaikin.sergey.reminder.Utils;
@@ -19,6 +18,8 @@ import com.bakaikin.sergey.reminder.fragment.CurrentTaskFragment;
 import com.bakaikin.sergey.reminder.model.Item;
 import com.bakaikin.sergey.reminder.model.ModelSeparator;
 import com.bakaikin.sergey.reminder.model.ModelTask;
+
+import java.util.Calendar;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -34,9 +35,6 @@ public class CurrentTasksAdapter extends TaskAdapter {
         super(taskFragment);
     }
 
-
-
-
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
 
@@ -49,7 +47,7 @@ public class CurrentTasksAdapter extends TaskAdapter {
                 CircleImageView priority = (CircleImageView) v.findViewById(R.id.cvTaskPriority);
 
                 return new TaskViewHolder(v, title, date, priority);
-case TYPE_SEPARATOR:
+            case TYPE_SEPARATOR:
                 View separator = LayoutInflater.from(viewGroup.getContext())
                         .inflate(R.layout.model_separator, viewGroup, false);
                 TextView type = (TextView) separator.findViewById(R.id.tvSeparatorName);
@@ -84,7 +82,7 @@ case TYPE_SEPARATOR:
 
             taskViewHolder.priority.setEnabled(true);
 
- if (task.getDate() != 0 && task.getDate() < Calendar.getInstance().getTimeInMillis()) {
+            if (task.getDate() != 0 && task.getDate() < Calendar.getInstance().getTimeInMillis()) {
                 itemView.setBackgroundColor(resources.getColor(R.color.gray_200));
             } else {
                 itemView.setBackgroundColor(resources.getColor(R.color.gray_50));
@@ -103,13 +101,13 @@ case TYPE_SEPARATOR:
             itemView.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
-                    Handler  handler = new Handler();
+                    Handler handler = new Handler();
                     handler.postDelayed(new Runnable() {
                         @Override
                         public void run() {
                             getTaskFragment().removeTaskDialog(taskViewHolder.getLayoutPosition());
                         }
-                    },1000);
+                    }, 1000);
                     return true;
                 }
             });
@@ -119,7 +117,7 @@ case TYPE_SEPARATOR:
                 public void onClick(View v) {
                     taskViewHolder.priority.setEnabled(false);
                     task.setStatus(ModelTask.STATUS_DONE);
-getTaskFragment().activity.dbHelper.update().status(task.getTimeStamp(), ModelTask.STATUS_DONE);
+                    getTaskFragment().activity.dbHelper.update().status(task.getTimeStamp(), ModelTask.STATUS_DONE);
 
 
                     taskViewHolder.title.setTextColor(resources.getColor(R.color.primary_text_disabled_material_light));
@@ -142,7 +140,7 @@ getTaskFragment().activity.dbHelper.update().status(task.getTimeStamp(), ModelTa
                                         "translationX", 0f, itemView.getWidth());
 
                                 ObjectAnimator translationXBack = ObjectAnimator.ofFloat(itemView,
-                                        "translationXBack", itemView.getWidth(), 0f);
+                                        "translationX", itemView.getWidth(), 0f);
 
                                 translationX.addListener(new Animator.AnimatorListener() {
                                     @Override
@@ -171,7 +169,7 @@ getTaskFragment().activity.dbHelper.update().status(task.getTimeStamp(), ModelTa
                                 translationSet.play(translationX).before(translationXBack);
                                 translationSet.start();
                             }
-                            
+
                         }
 
                         @Override
@@ -186,7 +184,7 @@ getTaskFragment().activity.dbHelper.update().status(task.getTimeStamp(), ModelTa
                     });
 
                     flipIn.start();
-                
+
 
                 }
             });

@@ -1,19 +1,18 @@
 package com.bakaikin.sergey.reminder;
 
-import android.app.DialogFragment;
-import android.app.FragmentManager;
 import android.os.Bundle;
 import android.os.PersistableBundle;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.tabs.TabLayout;
-import androidx.viewpager.widget.ViewPager;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.SearchView;
-import androidx.appcompat.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
+import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.viewpager.widget.ViewPager;
 
 import com.bakaikin.sergey.reminder.adapter.TabAdapter;
 import com.bakaikin.sergey.reminder.alarm.AlarmHelper;
@@ -25,6 +24,8 @@ import com.bakaikin.sergey.reminder.fragment.DoneTaskFragment;
 import com.bakaikin.sergey.reminder.fragment.SplashFragment;
 import com.bakaikin.sergey.reminder.fragment.TaskFragment;
 import com.bakaikin.sergey.reminder.model.ModelTask;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.tabs.TabLayout;
 
 public class MainActivity extends AppCompatActivity
         implements AddingTaskDialogFragment.AddingTaskListener,
@@ -42,6 +43,7 @@ public class MainActivity extends AppCompatActivity
     SearchView searchView;
 
     public DBHelper dbHelper;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,7 +56,7 @@ public class MainActivity extends AppCompatActivity
 
         dbHelper = new DBHelper(getApplicationContext());
 
-        fragmentManager = getFragmentManager();
+        fragmentManager = getSupportFragmentManager();
 
         runSplash();
 
@@ -149,8 +151,6 @@ public class MainActivity extends AppCompatActivity
             public void onTabReselected(TabLayout.Tab tab) {
 
             }
-
-
         });
 
         currentTaskFragment = (CurrentTaskFragment) tabAdapter.getItem(TabAdapter.CURRENT_TASK_FRAGMENT_POSITION);
@@ -185,13 +185,12 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onTaskAdded(ModelTask newTask) {
-        currentTaskFragment.addTask(newTask,true);
+        currentTaskFragment.addTask(newTask, true);
     }
 
     @Override
     public void onTaskAddingCancel() {
         Toast.makeText(this, "Task adding cancel", Toast.LENGTH_LONG).show();
-
     }
 
     @Override
@@ -201,7 +200,7 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onTaskRestore(ModelTask task) {
-        currentTaskFragment.addTask(task,false);
+        currentTaskFragment.addTask(task, false);
     }
 
     @Override
