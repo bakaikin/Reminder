@@ -1,14 +1,13 @@
 package com.bakaikin.sergey.reminder.fragment;
 
-
 import android.app.Activity;
 import android.os.Bundle;
-import android.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.bakaikin.sergey.reminder.R;
 import com.bakaikin.sergey.reminder.adapter.DoneTaskAdapter;
@@ -18,10 +17,6 @@ import com.bakaikin.sergey.reminder.model.ModelTask;
 import java.util.ArrayList;
 import java.util.List;
 
-
-/**
- * A simple {@link Fragment} subclass.
- */
 public class DoneTaskFragment extends TaskFragment {
 
     public DoneTaskFragment() {
@@ -63,7 +58,7 @@ public class DoneTaskFragment extends TaskFragment {
         return rootView;
     }
 
-@Override
+    @Override
     public void findTasks(String title) {
         checkAdapter();
         adapter.removeAllItems();
@@ -77,7 +72,7 @@ public class DoneTaskFragment extends TaskFragment {
     }
 
     @Override
- public void checkAdapter() {
+    public void checkAdapter() {
         if (adapter == null) {
             adapter = new DoneTaskAdapter(this);
             addTaskFromDB();
@@ -95,7 +90,7 @@ public class DoneTaskFragment extends TaskFragment {
         for (int i = 0; i < tasks.size(); i++) {
             addTask(tasks.get(i), false);
         }
- }
+    }
 
 
     @Override
@@ -103,7 +98,7 @@ public class DoneTaskFragment extends TaskFragment {
         int position = -1;
         checkAdapter();
 
-        for (int i = 0; i < adapter.getItemCount(); i ++) {
+        for (int i = 0; i < adapter.getItemCount(); i++) {
             if (adapter.getItem(i).isTask()) {
                 ModelTask task = (ModelTask) adapter.getItem(i);
                 if (newTask.getDate() < task.getDate()) {
@@ -126,8 +121,7 @@ public class DoneTaskFragment extends TaskFragment {
 
     @Override
     public void moveTask(ModelTask task) {
-        if (task.getDate()!=0)
-        {
+        if (task.getDate() != 0) {
             alarmHelper.setAlarm(task);
         }
         onTaskRestoreListner.onTaskRestore(task);

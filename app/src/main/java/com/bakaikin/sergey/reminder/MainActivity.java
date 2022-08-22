@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity
 
         fragmentManager = getSupportFragmentManager();
 
-       // runSplash();
+        runSplash();
 
         setUI();
     }

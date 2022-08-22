@@ -154,7 +154,7 @@ public class EditTaskDialogFragment extends DialogFragment {
                         etDate.setText(null);
                     }
                 };
-                datePickerFragment.show(getFragmentManager(), "DatePickerFragment");
+                datePickerFragment.show( getParentFragmentManager(), "DatePickerFragment");
             }
         });
 
@@ -178,7 +178,7 @@ public class EditTaskDialogFragment extends DialogFragment {
                         etTime.setText(null);
                     }
                 };
-                timePickerFragment.show(getFragmentManager(), "TimePickerFragment");
+                timePickerFragment.show(getParentFragmentManager(), "TimePickerFragment");
             }
         });
 
