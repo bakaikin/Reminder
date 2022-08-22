@@ -1,6 +1,7 @@
 package com.bakaikin.sergey.reminder.dialog
 
 import android.app.*
+import android.content.Context
 import android.content.DialogInterface
 import android.os.Bundle
 import android.text.Editable
@@ -28,9 +29,8 @@ class AddingTaskDialogFragment : DialogFragment() {
         fun onTaskAddingCancel()
     }
 
-    @Deprecated("Deprecated in Java")
-    override fun onAttach(activity: Activity) {
-        super.onAttach(activity)
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
         addingTaskListener = try {
             activity as AddingTaskListener
         } catch (e: ClassCastException) {
